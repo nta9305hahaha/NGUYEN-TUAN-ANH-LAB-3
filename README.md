@@ -135,4 +135,4 @@ ESP32 • FreeRTOS • PubSubClient • DHTesp • MQTT (EMQX public broker) •
 
 ## 👤 Tác giả
 
-Nta Tuấn Anh – Môn Hệ thống nhúng, Trường Đại học Giao thông Vận tải – Giảng viên hướng dẫn: Ths. Võ Quang Sơn
+Nguyễn Tuấn Anh – Môn Hệ thống nhúng, Trường Đại học Giao thông Vận tải – Giảng viên hướng dẫn: Ths. Võ Quang Sơn
