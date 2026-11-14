@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Smart Garden - ESP32 FreeRTOS</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="container">
+
+    <header>
+      <div>
+        <h1>🌿 SMART GARDEN</h1>
+        <p>ESP32 • FreeRTOS • MQTT Dashboard</p>
+      </div>
+      <span id="connection" class="status">
+        Đang kết nối...
+      </span>
+    </header>
+
+    <section class="sensor-grid">
+
+      <div class="card">
+        <h3>🌡️ Nhiệt độ</h3>
+        <div class="value" id="temperature">
+          -- °C
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>💧 Độ ẩm</h3>
+        <div class="value" id="humidity">
+          -- %
+        </div>
+      </div>
+
+    </section>
+
+    <section class="chart-grid">
+      <div class="card">
+        <h3>Biểu đồ nhiệt độ</h3>
+        <canvas id="tempChart"></canvas>
+      </div>
+
+      <div class="card">
+        <h3>Biểu đồ độ ẩm</h3>
+        <canvas id="humChart"></canvas>
+      </div>
+    </section>
+
+    <section class="card control">
+
+      <h2>⚙️ Điều khiển hệ thống</h2>
+
+      <div class="mode-buttons">
+        <button id="autoBtn" onclick="setMode('AUTO')">
+          AUTO
+        </button>
+
+        <button id="manualBtn" onclick="setMode('MANUAL')">
+          MANUAL
+        </button>
+      </div>
+
+      <p>Chế độ hiện tại:
+        <strong id="modeState">--</strong>
+      </p>
+
+      <div class="device">
+        <span>💧 Máy bơm</span>
+        <span id="pumpState">OFF</span>
+        <div>
+          <button class="manual-control"
+                  onclick="sendCommand('pump','ON')">
+            ON
+          </button>
+          <button class="manual-control"
+                  onclick="sendCommand('pump','OFF')">
+            OFF
+          </button>
+        </div>
+      </div>
+
+      <div class="device">
+        <span>🌀 Quạt</span>
+        <span id="fanState">OFF</span>
+        <div>
+          <button class="manual-control"
+                  onclick="sendCommand('fan','ON')">
+            ON
+          </button>
+          <button class="manual-control"
+                  onclick="sendCommand('fan','OFF')">
+            OFF
+          </button>
+        </div>
+      </div>
+
+      <div class="device">
+        <span>🌫️ Phun sương</span>
+        <span id="mistState">OFF</span>
+        <div>
+          <button class="manual-control"
+                  onclick="sendCommand('mist','ON')">
+            ON
+          </button>
+          <button class="manual-control"
+                  onclick="sendCommand('mist','OFF')">
+            OFF
+          </button>
+        </div>
+      </div>
+
+      <p>Công suất phun sương:
+        <strong id="mistPower">0%</strong>
+      </p>
+
+      <p id="message"></p>
+    </section>
+
+  </main>
+</body>
+</html>
